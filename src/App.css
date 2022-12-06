@@ -1,39 +1,9 @@
-.App section {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-height: 100vh;
-  background-color: rgb(40, 37, 53);
-}
-
-main {
-  padding: 10px;
-  height: 80vh;
-  margin: 10vh 0 10vh;
-  overflow-y: scroll;
-  display: flex;
-  flex-direction: column;
-}
-
-
-
-
-
-
-
-
-ul,
-li {
-  text-align: left;
-  list-style: none;
-}
-
 p {
   max-width: 500px;
   margin-bottom: 12px;
   line-height: 24px;
   padding: 10px 20px;
-  border-radius: 25px;
+  border-radius: 15px;
   position: relative;
   color: white;
   text-align: center;
@@ -45,9 +15,6 @@ p {
 }
 
 
-.sent {
-  flex-direction: row-reverse;
-}
 
 .sent p {
   color: white;
@@ -63,6 +30,11 @@ p {
 img {
   width: 40px;
   height: 40px;
-  border-radius: 50%;
   margin: 2px 5px;
+}
+
+
+.send-div input {
+  width: 500px;
+  height: 17px;
 }

@@ -28,7 +28,7 @@ function App() {
   const [user] = useAuthState(auth);
 
   return (
-    <div>
+    <div className="superdiv">
       <section>
         <div className="window">
           <div className="title-bar">
@@ -108,7 +108,7 @@ function ChatRoom() {
         <div ref={dummy}></div>
       </main>
 
-      <form onSubmit={sendMessage}>
+      <form onSubmit={sendMessage} className='send-div'>
         <input value={formValue} onChange={(e) => setFormValue(e.target.value)} />
         <button type="submit" >Enviar</button>
       </form>
