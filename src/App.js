@@ -23,10 +23,15 @@ const auth = firebase.auth();
 console.log(auth)
 const firestore = firebase.firestore()
 
+let audio = new Audio(require('./assets/whatsapp-sending-message-sound-effect.mp3'))
 
+const start = () => {
+  audio.play()
+}
 
 function App() {
   const [user] = useAuthState(auth);
+
 
   return (
     <div className="superdiv">
@@ -60,7 +65,9 @@ function SignIn() {
   }
 
   return (
-    <button onClick={signInWithGoogle}>Iniciar sesion con Google.</button>
+    <div>
+      <button onClick={signInWithGoogle}>Iniciar sesion con Google.</button>
+    </div>
   )
 }
 
@@ -79,7 +86,7 @@ function ChatRoom() {
   const dummy = useRef()
 
   const messagesRef = firestore.collection('messages')
-  const query = messagesRef.orderBy('createdAt').limitToLast(25);
+  const query = messagesRef.orderBy('createdAt').limitToLast(12);
 
   const [messages] = useCollectionData(query, { idField: 'id' })
 
@@ -112,7 +119,7 @@ function ChatRoom() {
 
       <form onSubmit={sendMessage} className='send-div'>
         <input value={formValue} onChange={(e) => setFormValue(e.target.value)} />
-        <button type="submit" disabled={!formValue}>Enviar</button>
+        <button type="submit" disabled={!formValue} onClick={start}>Enviar</button>
       </form>
     </>
   )
