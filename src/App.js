@@ -20,6 +20,7 @@ firebase.initializeApp({
 })
 
 const auth = firebase.auth();
+console.log(auth)
 const firestore = firebase.firestore()
 
 
@@ -36,7 +37,8 @@ function App() {
             <div className="title-bar-controls">
               <button aria-label="Minimize"></button>
               <button aria-label="Maximize"></button>
-              <button aria-label="Close" onClick={() => auth.signOut()}></button>
+              <button aria-label="Close"></button>
+              <SignOut />
             </div>
           </div>
           <div className="window-body">
@@ -53,8 +55,8 @@ function App() {
 
 function SignIn() {
   const signInWithGoogle = () => {
-    const provider = new firebase.auth.GoogleAuthProvider()
-    auth.signInWithPopup(provider)
+    const provider = new firebase.auth.GoogleAuthProvider();
+    auth.signInWithPopup(provider);
   }
 
   return (
@@ -77,7 +79,7 @@ function ChatRoom() {
   const dummy = useRef()
 
   const messagesRef = firestore.collection('messages')
-  const query = messagesRef.orderBy('createdAt').limit(25);
+  const query = messagesRef.orderBy('createdAt').limitToLast(25);
 
   const [messages] = useCollectionData(query, { idField: 'id' })
 
@@ -105,12 +107,12 @@ function ChatRoom() {
       <main>
         {messages && messages.map(msg => <ChatMessage key={msg.id} message={msg} />)}
 
-        <div ref={dummy}></div>
+        <span ref={dummy}></span>
       </main>
 
       <form onSubmit={sendMessage} className='send-div'>
         <input value={formValue} onChange={(e) => setFormValue(e.target.value)} />
-        <button type="submit" >Enviar</button>
+        <button type="submit" disabled={!formValue}>Enviar</button>
       </form>
     </>
   )
@@ -124,17 +126,10 @@ function ChatMessage(props) {
 
   return (<>
     <div className={`message ${messageClass}`}>
-      <img src={photoURL || 'https://api.adorable.io/avatars/23/abott@adorable.png'} />
+      <img src={photoURL || 'https://api.adorable.io/avatars/23/abott@adorable.png'} alt='fotogoogle' />
       <p>{text}</p>
     </div>
   </>)
 }
-
-
-
-
-
-
-
 
 export default App;
