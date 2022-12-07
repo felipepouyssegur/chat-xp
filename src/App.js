@@ -34,24 +34,32 @@ function App() {
 
 
   return (
-    <div className="superdiv">
-      <section>
-        <div className="window">
-          <div className="title-bar">
-            <div className="title-bar-text">XP CHAT</div>
-            <div className="title-bar-controls">
-              <button aria-label="Minimize"></button>
-              <button aria-label="Maximize"></button>
-              <button aria-label="Close"></button>
-              <SignOut />
+    <div>
+      <div className="bg">
+        <img src="https://i.ibb.co/bF8bWG7/jpgtopngconverter-com.png" alt="fondo de pantalla" />
+      </div>
+      <div className="superdiv">
+
+        <section>
+
+          <div className="window">
+            <div className="title-bar">
+              <div className="title-bar-text">XP CHAT</div>
+              <div className="title-bar-controls">
+                <button aria-label="Minimize"></button>
+                <button aria-label="Maximize"></button>
+                <button aria-label="Close"></button>
+                <SignOut />
+              </div>
+            </div>
+            <div className="window-body">
+              {user ? <ChatRoom /> : <SignIn />}
             </div>
           </div>
-          <div className="window-body">
-            {user ? <ChatRoom /> : <SignIn />}
-          </div>
-        </div>
-      </section>
+        </section>
+      </div>
     </div>
+
   );
 }
 
@@ -65,9 +73,10 @@ function SignIn() {
   }
 
   return (
-    <div>
+    <div className="signin">
       <button onClick={signInWithGoogle}>Iniciar sesion con Google.</button>
     </div>
+
   )
 }
 
@@ -86,7 +95,7 @@ function ChatRoom() {
   const dummy = useRef()
 
   const messagesRef = firestore.collection('messages')
-  const query = messagesRef.orderBy('createdAt').limitToLast(12);
+  const query = messagesRef.orderBy('createdAt').limitToLast(15);
 
   const [messages] = useCollectionData(query, { idField: 'id' })
 
@@ -106,21 +115,23 @@ function ChatRoom() {
     })
 
     setFormValue('')
-    dummy.current.scrollIntoView({ behavior: 'smooth' })
+    dummy.scrollTop -= 100
   }
 
   return (
     <>
-      <main>
+      <main className="mensajediv">
         {messages && messages.map(msg => <ChatMessage key={msg.id} message={msg} />)}
 
         <span ref={dummy}></span>
       </main>
 
-      <form onSubmit={sendMessage} className='send-div'>
-        <input value={formValue} onChange={(e) => setFormValue(e.target.value)} />
-        <button type="submit" disabled={!formValue} onClick={start}>Enviar</button>
-      </form>
+      <div className="msgdiv">
+        <form onSubmit={sendMessage} className='send-div'>
+          <input value={formValue} onChange={(e) => setFormValue(e.target.value)} />
+          <button type="submit" disabled={!formValue} onClick={start}>Enviar</button>
+        </form>
+      </div>
     </>
   )
 }

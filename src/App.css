@@ -1,20 +1,6 @@
-p {
-  max-width: 500px;
-  margin-bottom: 12px;
-  line-height: 24px;
-  padding: 10px 20px;
-  border-radius: 15px;
-  position: relative;
-  color: white;
-  text-align: center;
+html {
+  overflow-y: hidden;
 }
-
-.message {
-  display: flex;
-  align-items: center;
-}
-
-
 
 .sent p {
   color: white;
@@ -22,18 +8,11 @@ p {
   align-self: flex-end;
 }
 
-.received p {
-  background: #0b93f6;
-  color: rgb(255, 255, 255);
+.send-div {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
 }
-
-
-img {
-  width: 40px;
-  height: 40px;
-  margin: 2px 5px;
-}
-
 
 .send-div input {
   width: 500px;
@@ -41,6 +20,15 @@ img {
 }
 
 
+.signin {
+  display: flex;
+  justify-content: center;
+}
+
+main {
+  z-index: -1000px !important;
+  position: sticky;
+}
 
 p {
   max-width: 500px;
@@ -53,9 +41,23 @@ p {
   text-align: center;
 }
 
+.title-bar {
+  z-index: 10000 !important;
+  position: fixed !important;
+  width: 59.5vw;
+}
+
 .message {
   display: flex;
   align-items: center;
+}
+
+.msgdiv {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin-top: 42vw;
 }
 
 
@@ -76,30 +78,28 @@ img {
   margin: 2px 5px;
 }
 
-.send-div {
+.superdiv {
+  height: 100vh;
+  margin-left: 100px;
+  margin-right: 100px;
+  padding-top: 40px;
   display: flex;
   justify-content: center;
 }
 
-.superdiv {
-  height: 100vh;
-  margin-top: 45px;
-  margin-left: 140px;
-  margin-right: 140px;
-}
-
 .window {
-  height: 100% !important;
+  height: 42vw !important;
+  overflow: scroll !important;
+  position: relative;
+  width: 60vw;
+  z-index: 10000000 !important;
 }
 
 
-html {
-  background-image: url('https://i.ibb.co/bF8bWG7/jpgtopngconverter-com.png');
-  /* Full height */
-  height: 90vh;
-  /* Center and scale the image nicely */
-  background-position: center;
-  background-size: auto;
-  background-repeat: no-repeat;
-  /* overflow-y: hidden; */
+.bg img {
+  width: 100%;
+  height: 100%;
+  border-radius: 0px;
+  z-index: -100000 !important;
+  position: absolute;
 }
