@@ -95,6 +95,10 @@ img {
   z-index: 10000000 !important;
 }
 
+.window-body {
+  margin-top: 30px !important;
+}
+
 
 .bg img {
   width: 100%;
