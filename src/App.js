@@ -129,7 +129,7 @@ function ChatRoom() {
       <div className="msgdiv">
         <form onSubmit={sendMessage} className='send-div'>
           <input value={formValue} onChange={(e) => setFormValue(e.target.value)} />
-          <button type="submit" disabled={!formValue} onClick={start}>Enviar</button>
+          <button type="submit" disabled={!formValue} onClick={start} className='botonenviar'>Enviar</button>
         </form>
       </div>
     </>

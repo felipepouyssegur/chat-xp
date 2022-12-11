@@ -107,3 +107,7 @@ img {
   z-index: -100000 !important;
   position: absolute;
 }
+
+.botonenviar {
+  color: black;
+}
